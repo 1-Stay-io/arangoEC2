@@ -1,8 +1,8 @@
 const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 const faker = require('faker');
-// const milTenMil = require('../pregenerated/milTenMil');
-// const milThousand = require('../pregenerated/milThousand');
+const milTenMil = require('./milTenMil.js');
+const milThousand = require('./milThousand.js');
 
 const writer = csvWriter();
 
@@ -63,7 +63,7 @@ randomNumBetween = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 randArrayOfPhotos = () => {
   let result = [];
-  for (var i = 0; i < randInt(20); i++) {
+  for (var i = 0; i < randInt(10) + 10; i++) {
     result.push(photoGenerator());
   }
   return result;
@@ -132,7 +132,7 @@ createContainsEdge = () => {
 const dataGen = (i, name, createFunc, cb) => {
   console.time(name);
   const writer = csvWriter();
-  writer.pipe(fs.createWriteStream(__dirname + `/csvOrJSON/${name}.csv`));
+  writer.pipe(fs.createWriteStream(__dirname + `/csvJson/${name}.csv`));
 
   function write() {
     let ok = true;

@@ -24,6 +24,6 @@ const storeArray = (data, path) => {
   }
 };
 
-storeArray(milTenMil, __dirname + `/pregenerated/milTenMil.js`);
+storeArray(milTenMil, __dirname + `/milTenMil.js`);
 
-storeArray(milThousand, __dirname + `/pregenerated/milThousand.js`);
+storeArray(milThousand, __dirname + `/milThousand.js`);
