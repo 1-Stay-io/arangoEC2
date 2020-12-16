@@ -1,0 +1,65 @@
+
+--------returns favlists of specified user----------
+FOR user IN user
+Filter user._key =="7"
+FOR v,e,p IN 1..1 OUTBOUND
+user owns
+limit 1000
+RETURN e
+
+----------returns listings on favlist
+FOR doc IN favList
+Filter doc._key =="986576"
+FOR v,e,p IN 1..1 OUTBOUND
+doc contains
+limit 1000
+RETURN e
+
+db._profileQuery(`
+for doc in favList
+filter doc._key ==“354776”
+for v,e,p in 1..1 outbound
+doc contains
+limit 50
+return e `, {}, {colors: false}
+);
+
+----returns home listing -------
+FOR home IN listings
+Filter home._key =="19"
+RETURN home
+
+------query ---------------
+db._profileQuery(`
+........> FOR doc IN acollection
+........>  FILTER doc.value < 10
+........>  RETURN doc`, {}, {colors: false}
+........> );
+
+ db._query(`FOR home In listings filter home._key == '7' return home`);
+
+ 
+
+db._profileQuery(`
+for doc in favList
+filter doc._key ==“354776”
+for v,e,p in 1..1 outbound
+doc contains
+limit 50
+return e `, {}, {colors: false}
+);
+
+db._profileQuery(`
+for doc in listings
+filter doc._key ==“354776”
+for v,e,p in 1..1 outbound
+doc contains
+limit 50
+return e `, {}, {colors: false}
+);
+
+
+
+
+-----------indexing ---------------------------------
+db.posts.ensureIndex({ type: "persistent", fields: [ "name" ] })
